@@ -38,13 +38,13 @@ class MyDocument extends Document {
     return (
       <Html lang="en" prefix="og: https://ogp.me/ns#">
         <Head>
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:site_name" content="DemoCard Test" />
-        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta property="og:type" content="website" />
-        <meta name="theme-color" content="#000000" />
-        <meta name="keywords" content="DemoCard Test" />
-        <meta property="og:image" content="https://dev-dogecard.d2ap16azx4464o.amplifyapp.com/logos/home-preview.png" />
+          <meta property="og:locale" content="en_US" />
+          <meta property="og:site_name" content="DemoCard Test" />
+          <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+          <meta property="og:type" content="website" />
+          <meta name="theme-color" content="#000000" />
+          <meta name="keywords" content="DemoCard Test" />
+          <meta property="og:image" content="https://dev-dogecard.d2ap16azx4464o.amplifyapp.com/logos/home-preview.png" />
         </Head>
         <body>
           <Main />

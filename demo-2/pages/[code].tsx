@@ -6,6 +6,7 @@ import styles from '../styles/Home.module.css'
 
 export default function Home() {
   const router = useRouter();
+  console.log("router", router);
   const pageQuery = router.asPath.split('/').pop() || '';
 
   // const pageQuery = typeof window !== 'undefined' && (window.location.href).split('/').pop() || '';
@@ -37,9 +38,7 @@ export default function Home() {
     twitterTitle: (inviterReferralCode: any) => 'DemoCard - up to 8% Democoin Rewards.'
   };
 
-  const ogMetadata = (hasInviterReferral
-    ? HOMEPAGE_METADATA_WITH_REFERRAL
-    : HOMEPAGE_METADATA_WITHOUT_REFERRAL) as any;
+  const ogMetadata = HOMEPAGE_METADATA_WITH_REFERRAL as any;
 
   return (
     <div className={styles.container}>

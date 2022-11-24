@@ -5,12 +5,13 @@ import { useRouter } from 'next/router'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
-  const router = useRouter();
-  const pageQuery = router.asPath.split('/').pop() || '';
-
-  // const pageQuery = typeof window !== 'undefined' && (window.location.href).split('/').pop() || '';
+  const pageQuery = typeof window !== 'undefined' && (window.location.href).split('/').pop() || '';
   const hasInviterReferral = pageQuery.length === 8;
-  const inviterReferralCode = (pageQuery as string) || '';
+  const inviterReferralCode = '12345678';
+
+  const router = useRouter();
+  console.log("router", router);
+
 
 
   const HOMEPAGE_METADATA_WITH_REFERRAL = {
@@ -30,16 +31,14 @@ export default function Home() {
     ogDescription: 'Earn up to 8% back in Democoin.',
     ogImageWidth: '1200',
     ogImageHeight: '628',
-    ogTitle: (inviterReferralCode: any) => 'DogeCard - up to 8% Democoin Rewards.',
+    ogTitle: (inviterReferralCode: any) => 'DogeCard - invited you to earn up to 8% Democoin Rewards.',
     ogUrl: (inviterReferralCode: any) => 'https://dev-dogecard.d2ap16azx4464o.amplifyapp.com/',
     themeColor: '#5cd95b',
-    ogImage: 'https://dev-dogecard.d2ap16azx4464o.amplifyapp.com/logos/home-preview.png',
-    twitterTitle: (inviterReferralCode: any) => 'DemoCard - up to 8% Democoin Rewards.'
+    ogImage: 'https://dev-dogecard.d2ap16azx4464o.amplifyapp.com/logos/referral-preview.png',
+    twitterTitle: (inviterReferralCode: any) => 'DemoCard - invited you to earn up to 8% Democoin Rewards.'
   };
 
-  const ogMetadata = (hasInviterReferral
-    ? HOMEPAGE_METADATA_WITH_REFERRAL
-    : HOMEPAGE_METADATA_WITHOUT_REFERRAL) as any;
+  const ogMetadata = HOMEPAGE_METADATA_WITH_REFERRAL as any;
 
   return (
     <div className={styles.container}>

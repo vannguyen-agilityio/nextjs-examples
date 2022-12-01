@@ -4,10 +4,10 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import styles from '../styles/Home.module.css';
 
-export default function Home() {
-  const router = useRouter();
-  const inviterReferralCode = router.query?.code || '';
-  const hasInviterReferral = inviterReferralCode.length === 8;
+export default function Home({ inviterReferralCode }: any) {
+  // const router = useRouter();
+  // const inviterReferralCode = router.query?.code || '';
+  // const hasInviterReferral = inviterReferralCode.length === 8;
 
   // const router = useRouter();
   // console.log("router", router);
@@ -149,4 +149,14 @@ export default function Home() {
       </footer>
     </div>
   );
+}
+
+export const getServerSideProps = async (context: { query: { code: string; }; }) => {
+  const inviterReferralCode = context.query?.code || '';
+  const hasInviterReferral = inviterReferralCode.length === 8;
+  return {
+    props: {
+      inviterReferralCode: hasInviterReferral ? inviterReferralCode : ''
+    }
+  }
 }

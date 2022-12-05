@@ -4,14 +4,14 @@ const nextConfig = {
   swcMinify: true,
   async rewrites() {
     return [
+      // {
+      //   source: '/',
+      //   destination: '/',
+      // },
       {
-        source: '/',
+        source: '/:code',
         destination: '/',
       },
-      // {
-      //   source: '/:code',
-      //   destination: '/code',
-      // },
       // {
       //   source: '/referral/#code',
       //   destination: '/referral#:code',

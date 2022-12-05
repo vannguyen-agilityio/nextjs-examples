@@ -1,16 +1,16 @@
 import React from 'react';
 import Head from 'next/head'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
-  const router = useRouter();
-  const pageQuery = router.asPath.split('/').pop() || '';
+export default function Home({ inviterReferralCode }: any) {
+  // const router = useRouter();
+  // const pageQuery = router.asPath.split('/').pop() || '';
 
-  // const pageQuery = typeof window !== 'undefined' && (window.location.href).split('/').pop() || '';
-  const hasInviterReferral = pageQuery.length === 8;
-  const inviterReferralCode = (pageQuery as string) || '';
+  // // const pageQuery = typeof window !== 'undefined' && (window.location.href).split('/').pop() || '';
+  // const hasInviterReferral = pageQuery.length === 8;
+  // const inviterReferralCode = (pageQuery as string) || '';
 
 
   const HOMEPAGE_METADATA_WITH_REFERRAL = {
@@ -37,7 +37,7 @@ export default function Home() {
     twitterTitle: (inviterReferralCode: any) => 'DemoCard - up to 8% Democoin Rewards.'
   };
 
-  const ogMetadata = (hasInviterReferral
+  const ogMetadata = (inviterReferralCode
     ? HOMEPAGE_METADATA_WITH_REFERRAL
     : HOMEPAGE_METADATA_WITHOUT_REFERRAL) as any;
 
@@ -144,4 +144,14 @@ export default function Home() {
       </footer>
     </div>
   )
+}
+
+export const getServerSideProps = async (context: { query: { code: string; }; }) => {
+  const inviterReferralCode = context.query?.code || '';
+  const hasInviterReferral = inviterReferralCode.length === 8;
+  return {
+    props: {
+      inviterReferralCode: hasInviterReferral ? inviterReferralCode : ''
+    }
+  }
 }
